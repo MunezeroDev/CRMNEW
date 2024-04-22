@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css " />
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" type="text/css" href="{% static '/css/credential.css' %}">
+		<title>Login</title>
+	</head>
+
+	<body>
+		<div class="c-container" id="c-container">
+			<div class="c-form-container sign-up">
+				<form action="" method="post">
+					{% csrf_token %}
+					<h1>Create Account</h1>
+					<br>
+					<span>Or use register with your details</span>
+					<br>
+					<input type="text" name="fname" id="" placeholder=" Firstname" />
+					<input type="text" name="sname" id="" placeholder=" Surname" />
+					<input type="email" name="email" id="" placeholder=" email" />
+					<input type="password" name="password" id="" placeholder=" Password" />
+					<input type="password2" name="password2" id="" placeholder=" Confirm Password" />
+					<button>Sign Up</button>
+				</form>
+			</div>
+
+			<div class="c-form-container sign-in">
+				<form action="" method="post">
+					{% csrf_token %}
+					<h1>Sign In</h1>
+					<br>
+					<span>Use email and password</span>
+					<br>
+					<input type="text" name="" id="" placeholder=" email" />
+					<input type="password" name="" id="" placeholder=" Password" />
+					<a href="#">Forgot Your Password</a>
+					<button>Sign In</button>
+				</form>
+			</div>
+
+			<div class="c-toggle-container">
+				<div class="c-toggle">
+					<div class="c-toggle-panel c-toggle-left">
+						<h2>Falcon Welcomes You Back</h2>
+						<p>If you already have an account </p>
+						<button class="c-hidden" id="login">Sign In</button>
+					</div>
+					
+
+					<div class="c-toggle-panel c-toggle-right">
+						<h1>Welcome to Falcon</h1>
+						<p>If you don't have an account </p>
+						<button class="c-hidden" id="register">Sign Up</button>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<!-- <script src="script.js"></script> -->
+		 <script src="{% static '/js/credential.js' %}"></script>
+	</body>
+</html>

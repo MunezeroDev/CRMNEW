@@ -1,0 +1,16 @@
+{% extends 'accounts/base/main.html' %}
+{% load static %}
+{% block content %}
+
+<form id="subscription-form" action="{% url 'customer_subscribe' pk=customer.id %}" method="POST">
+    {% csrf_token %}
+    {{ subscription_details_form.as_p }}
+    <div id="monthly-charges"></div>
+    <div id="total-charges"></div>
+    <input type="submit" value="Subscribe">
+    <a href="{% url 'customers' %}">Cancel</a>
+</form>
+
+<script src="{% static 'js/subscription_form.js' %}"></script>
+
+{% endblock %}

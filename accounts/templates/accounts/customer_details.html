@@ -1,0 +1,325 @@
+
+{% extends 'accounts/base/main.html' %}  
+{% block content %}
+
+<style>
+    .page-item.active .page-link {
+        z-index: 3;
+        color: #fff;
+        background-color: #42B883;
+        border-color: #42B883;
+    }
+
+    .page-link {
+        color: #42B883;
+      }
+
+    .fixed-height-div {
+      height: 100px; /* Set your desired fixed height here */
+      overflow: hidden; /* Optionally hide overflowing content */
+    }
+
+    .container1, .container2, .col1, .col2 {
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        
+    }
+
+    .container1{
+      margin-bottom: 0;
+      padding-top: 1rem;
+      color: #42B883;
+    }
+
+    .parent-container{ 
+      border: 1px solid rgba(0,0,0,.125);
+      border-radius: .25rem;
+      padding: 0;
+    }
+
+    .card-body-custom{
+      border: none;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    .card-body-custom span{
+      color: grey;
+    }  
+    
+    .orders{
+      height: 50px; 
+      white-space: normal;
+    }
+
+    .orders .deletebtn{
+      text-align: center;
+    }
+
+    .parent-container{
+        margin-left:2rem;
+    }
+
+</style>
+
+  <nav class="navbar" >
+    <div class="container-fluid custom-nav" style="background-color: #fff; margin: 0 9rem 0 1rem; padding: .5rem 1rem; display: flex;
+    align-items: center; justify-content: center;">
+       <p class="text-sm font-weight-bold  mb-1 text-uppercase"> Customer Profile For : <span style="color: grey;">{{customer.first_name}} </span></p>
+    </div>
+  </nav>
+
+  {% if customer %}
+    <!-- Parent Container -->
+    <div class="container-fluid" style="margin-bottom: 1rem;">
+      
+      <!-- Parent Container Row -->
+      <div class="row" >
+
+        <!-- Personal Details  -->
+        <div class="parent-container col-xl-5 col-md-4 mb-4" style="background-color:white;" >
+
+            <div 
+              class=" text-center text-sm font-weight-bold text-uppercase  container1">
+               Personal Details
+            </div>
+
+            <div class="row container2">
+                <div class="col-6 col1">
+                      <!-- Content for first column -->
+                    <div class="card-body-custom card card-body ">        
+                       
+                        <p class="text-sm font-weight-bold  mb-1">First Name: <span>{{customer.first_name}} </span></p>
+                        <p class="text-sm font-weight-bold  mb-1">DOB : <span>{{customer.date_of_birth}} </span></p>
+                        <p class="text-sm font-weight-bold  mb-1">Nationality : <span>{{customer.nationality}} </span></p>
+                        <p class="text-sm font-weight-bold  mb-1">NationalID : <span>{{customer.national_id}} </span></p>
+                        <p class="text-sm font-weight-bold  mb-1">Has Dependants: <span>{{customer.Dependants}} </span></p>
+                        <p class="text-sm font-weight-bold  mb-1">Contact: <span>{{customer.phone_number }} </span></p>
+                        <p class="text-sm font-weight-bold  mb-1">Town: <span>{{customer.town}} </span></p>
+                        <p class="text-sm font-weight-bold  mb-1">Occupation: <span>{{customer.occupation }} </span></p>
+                        <p class="text-sm font-weight-bold  mb-1">Employment: <span>{{customer.employment_status}} </span></p>
+
+                    </div>
+                </div>
+
+                <div class="col-6 col1">
+                    <!-- Content for first column -->
+                    <div class="card-body-custom card card-body ">        
+                        <p class="text-sm font-weight-bold  mb-1">Last Name: <span>{{customer.last_name}} </span></p> 
+                        <p class="text-sm font-weight-bold  mb-1">Gender <span>{{customer.gender}} </span></p>
+                        <p class="text-sm font-weight-bold  mb-1">marital_status:<span>{{customer.marital_status}} </span></p>
+                        <p class="text-sm font-weight-bold  mb-1">passsport:<span>{{customer.passport}} </span></p>
+                        <p class="text-sm font-weight-bold  mb-1">Tenure: <span>{{customer.tenure }}</span></p> 
+                        <p class="text-sm font-weight-bold  mb-1">Email: <span>{{customer.email}} </span></p>
+                        <p class="text-sm font-weight-bold  mb-1">County: <span>{{customer.county}} </span></p>
+                        <p class="text-sm font-weight-bold  mb-1">Income : <span>{{customer.income_status }} </span></p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Service Details  -->
+        <div class="parent-container col-xl-5 col-md-4 mb-4" >
+            <!-- Service Details Header -->
+            <div class=" text-center text-sm font-weight-bold text-uppercase  container1">
+               Service Details
+            </div>
+
+            <!-- Service Details Content -->
+            <div class="row container2" style="background-color: white;">
+
+                <!-- Service Details Content  Column1-->
+                <div class="col-6 col1">
+
+                    <!-- Content for first column1 card -->
+                    <div class="card-body-custom card card-body " >        
+                       
+                        <p class="text-sm font-weight-bold mb-1">
+                            Internet Service:
+                            <span>
+                              {% if service_details.InternetService %}
+                                {{ service_details.InternetService }}
+                              {% else %}
+                                Not Paid
+                              {% endif %}
+                            </span>
+                        </p>  
+
+                        <p class="text-sm font-weight-bold mb-1">
+                          Paid for Multiple Lines:
+                          <span>
+                            {% if service_details.MultipleLines %}
+                              {{ service_details.MultipleLines }}
+                            {% else %}
+                              Not Paid
+                            {% endif %}
+                          </span>
+                        </p>
+
+                        <p class="text-sm font-weight-bold mb-1">
+                          Number of lines:
+                          <span>
+                            {% if service_details.No_ofLines %}
+                              {{ service_details.No_ofLines }}
+                            {% else %}
+                              Not Paid
+                            {% endif %}
+                          </span>
+                        </p>
+
+                        <p class="text-sm font-weight-bold mb-1">
+                          Paid for Online Security:
+                          <span>
+                            {% if service_details.OnlineSecurity %}
+                              {{ service_details.OnlineSecurity }}
+                            {% else %}
+                              Not Paid
+                            {% endif %}
+                          </span>
+                        </p>
+
+                        <p class="text-sm font-weight-bold mb-1">
+                          Paid For Device Protection:
+                          <span>
+                            {% if service_details.DeviceProtection %}
+                              {{ service_details.DeviceProtection }}
+                            {% else %}
+                              Not Paid
+                            {% endif %}
+                          </span>
+                        </p>
+
+                        <p class="text-sm font-weight-bold mb-1">
+                         Paid for Tech Support:
+                          <span>
+                            {% if service_details.TechSupport %}
+                              {{ service_details.TechSupport }}
+                            {% else %}
+                              Not Paid
+                            {% endif %}
+                          </span>
+                        </p>
+
+                        <p class="text-sm font-weight-bold mb-1">
+                          Paid For Streaming TV:
+                          <span>
+                            {% if service_details.StreamingTV %}
+                              {{ service_details.StreamingTV }}
+                            {% else %}
+                              Not Paid
+                            {% endif %}
+                          </span>
+                        </p>
+
+                        <p class="text-sm font-weight-bold mb-1">
+                           Paid For Streaming Movies:
+                          <span>
+                            {% if service_details.StreamingMovies %}
+                              {{ service_details.StreamingMovies }}
+                            {% else %}
+                              Not Paid
+                            {% endif %}
+                          </span>
+                        </p>
+
+                        <p class="text-sm font-weight-bold mb-1">
+                           Paid for Online Backup:
+                          <span>
+                            {% if service_details.OnlineBackUp %}
+                              {{ service_details.OnlineBackUp }}
+                            {% else %}
+                              Not Paid
+                            {% endif %}
+                          </span>
+                        </p>
+
+                    </div>
+                </div>
+
+                 <!-- Service Details Content  column2-->
+                <div class="col-6 col1">
+
+                    <!-- Content for first column2 card -->
+                    <div class="card-body-custom card card-body ">        
+                       
+                        <p class="text-sm font-weight-bold mb-1">
+                          Contract: 
+                          <span>
+                            {% if billing_details.ContractType %}
+                              {{ billing_details.ContractType }}
+                            {% else %}
+                              Not Paid
+                            {% endif %}
+                          </span>
+                        </p>
+                            
+                        <p class="text-sm font-weight-bold mb-1">
+                            Payment Methods:
+                            <span>
+                              {% if billing_details.PaymentMethod %}
+                                {{ billing_details.PaymentMethod }}
+                              {% else %}
+                                Not Paid
+                              {% endif %}
+                            </span>
+                        </p>
+
+                        <p class="text-sm font-weight-bold mb-1">
+                          Tenure Of Payment:
+                          <span>
+                            {{customer.tenure }} Months
+                            {% comment %} {% if {{customer.tenure }} %}
+                              {{ {{customer.tenure }}n }}
+                            {% else %}
+                              Not Paid
+                            {% endif %} {% endcomment %}
+                          </span>
+                        </p>
+
+                        
+                        <p class="text-sm font-weight-bold mb-1">
+                          Monthly Charges: Ksh.
+                          <span>
+                            {% if billing_details.MonthlyCharges %}
+                              {{ billing_details.MonthlyCharges }}
+                            {% else %}
+                              Not Paid
+                            {% endif %}
+                          </span>
+                        </p>
+
+                        <p class="text-sm font-weight-bold mb-1">
+                          Total Charges: Ksh.
+                          <span>
+                            {% if billing_details.TotalCharges%}
+                              {{ billing_details.TotalCharges}}
+                            {% else %}
+                              Not Paid
+                            {% endif %}
+                          </span>
+                        </p>
+
+
+
+                        <p class="text-sm font-weight-bold mb-1">
+                          Payment Comment:
+                          <span>
+                            Satifactory
+                          </span>
+                        </p>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+      </div>
+    </div>
+  {% endif %}
+
+ {% endblock %}

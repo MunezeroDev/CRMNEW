@@ -1,0 +1,116 @@
+{% extends 'accounts/base/main.html' %}
+{% block content %}
+
+<style>
+  .page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #42B883;
+    border-color: #42B883;
+  }
+
+  .page-link {
+    color: #42B883;
+  }
+
+  .fixed-height-div {
+    height: 100px;
+    /* Set your desired fixed height here */
+    overflow: hidden;
+    /* Optionally hide overflowing content */
+  }
+</style>
+<!-- Table -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0" id="flex-container">
+          <h3 class="mb-0">Contracts</h3>
+          <div>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm shadow-sm"
+              style="background-color:#42B883;">
+              <i class="fa-solid fa-square-plus fa-lg" style="color: #fff;"></i>
+              <span style="color: #fff; font-weight: 800;">New Contract</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush" style="table-layout: fixed; width: 100%;">
+            <thead class="thead-light">
+              <tr>
+                <th style=" width: 12%;">customer</th>
+                <th style=" white-space: normal; height:50px; width: 12%;">Device Protection</th>
+                <th style=" white-space: normal; height:50px; width: 10%;"> Tech Support</th>
+
+                <th style=" white-space: normal; height:50px; width: 10%; ">Streaming TV</th>
+                <th style=" white-space: normal; height:50px; width: 10%;">Streaming Movies</th>
+                <th style=" white-space: normal; height:50px; width: 10%; ">Contract Type </th>
+                <th style=" white-space: normal; height:50px; width: 10%; ">Payment Method</th>
+                <th style=" white-space: normal; height:50px; width: 10%;">Monthly Charges</th>
+
+                <th style=" width: 10%; ">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for i in contract %}
+              <tr>
+                <td style="height: 50px; white-space: normal;">{{ i.customer}}</td>
+                <td style="height: 50px; white-space: normal;">{{ i.DeviceProtection}}</td>
+                <td style="height: 50px; white-space: normal;">{{ i.TechSupport}}</td>
+                <td style="height: 50px; white-space: normal;">{{ i.StreamingTV  }}</td>
+                <td style="height: 50px; white-space: normal;">{{ i.StreamingMovies}}</td>
+                <td style="height: 50px; white-space: normal;">{{ i.ContractType}}</td>
+                <td style="height: 50px; white-space: normal;">{{ i.PaymentMethod}}</td>
+                <td style="height: 50px; white-space: normal;">{{ i.MonthlyCharges }}</td>
+                <td style="height: 50px; white-space: normal;">
+                  <a href="#" class="view">
+                    <i class="fa-solid fa-eye" a style="color: #74C0FC; margin-right: 1rem;"></i>
+                  </a>
+                  <a href="#" class="edit"><i class="fa-solid fa-pencil"
+                      style="color: #42B883; margin-right: 1rem;"></i></a>
+                </td>
+              </tr>
+              {% endfor %}
+
+
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card-footer py-4">
+          <nav aria-label="...">
+            <ul class="pagination justify-content-end mb-0">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">
+                  <i class="fas fa-angle-left"></i>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">
+                  <i class="fas fa-angle-right"></i>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
